@@ -80,8 +80,6 @@ public class AuthController {
 
         User user = userService.saveOneUser(newUser);
 
-        user.addRole(new Role(Long.valueOf(4)));
-
         User updatedUser = userRepository.save(user);
 
         if(user != null)

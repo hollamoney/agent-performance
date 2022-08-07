@@ -53,6 +53,10 @@ public class User implements UserDetails {
         this.roles.add(role);
     }
 
+    public void delRole() {
+        this.roles.clear();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();

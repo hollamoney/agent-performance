@@ -58,6 +58,21 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @PostMapping("/{userId}")
+    public ResponseEntity<Void> makeAdmin(@PathVariable Long userId){
+
+        User user = userService.getOneUserById(userId);
+
+        if(user != null)
+        {
+            user.delRole();
+            user.addRole(new Role(Long.valueOf(3)));
+            User updatedUser = userRepository.save(user);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @GetMapping("/{userId}")
     public UserResponse getOneUser(@PathVariable Long userId){
         User user = userService.getOneUserById(userId);

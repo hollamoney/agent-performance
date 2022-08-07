@@ -1,9 +1,11 @@
 package com.agent.agentperformance.responses;
 
+import com.agent.agentperformance.entities.Role;
 import com.agent.agentperformance.entities.User;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class UserResponse {
@@ -17,6 +19,8 @@ public class UserResponse {
 
     String lastName;
 
+    Set<Role> roles;
+
 
 
 
@@ -27,6 +31,7 @@ public class UserResponse {
         this.firstName = entity.getFirstName();
         this.lastName = entity.getLastName();
         this.agentId = entity.getAgentId();
+        this.roles = entity.getRoles();
     }
 
 }
